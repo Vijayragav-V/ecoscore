@@ -5,7 +5,6 @@ const Action = require("../models/Action");
 const calculateEcoScore = require("../utils/calculateEcoScore");
 const validateLifestyleData = require("../utils/validateLifestyleData");
 
-// Register user
 const register = async (req, res, next) => {
   try {
     const { username, email, password, lifestyleData } = req.body;
@@ -52,7 +51,6 @@ const register = async (req, res, next) => {
   }
 };
 
-// Login user
 const login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
@@ -83,7 +81,6 @@ const login = async (req, res, next) => {
   }
 };
 
-// Check authorization
 const checkAuth = (req, res, next) => {
   return res.status(200).json({ message: "Authorized" });
 };
@@ -102,7 +99,6 @@ const getUser = async (req, res, next) => {
   }
 };
 
-// Update user
 const updateUser = async (req, res, next) => {
   try {
     const userId = req.userId;
@@ -141,7 +137,6 @@ const updateUser = async (req, res, next) => {
 
       user.lifestyleData = lifestyleData;
 
-      // Recalculate the eco score
       const emissionsSaved = await user.actionsCompleted.reduce(
         async (total, action) => {
           const actionData = await Action.findById(action.actionId);

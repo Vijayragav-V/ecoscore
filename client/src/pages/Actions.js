@@ -70,7 +70,7 @@ const Actions = () => {
             </div>
           </div>
         )}
-        <Link to="/profile" style={{ color: "green", fontSize: "24px" }}>
+        <Link to={token ? "profile" : "/"} style={{ color: "green", fontSize: "24px" }}>
           <FaArrowLeft />
         </Link>
         <h1 className="text-3xl font-bold text-green-700 mb-6 text-center">

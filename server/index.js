@@ -12,7 +12,7 @@ const router = require("./routes");
 const app = express();
 
 app.use(express.json());
-app.use(cors({ origin: "http://localhost:3000" }));  // Fix CORS configuration
+app.use(cors({ origin: "http://localhost:3000" })); 
 app.use(requestLogger);
 
 app.use("/api", router);
