@@ -23,7 +23,7 @@ const SignUp = () => {
     recycling: false,
   });
 
-  const [step, setStep] = useState(1); // Step 1: Basic info, Step 2: Lifestyle data
+  const [step, setStep] = useState(1);
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
@@ -37,7 +37,7 @@ const SignUp = () => {
 
   const handleSubmitBasic = (e) => {
     e.preventDefault();
-    setStep(2); // Move to step 2 (lifestyle data)
+    setStep(2);
   };
 
   const handleSubmitLifestyle = async (e) => {
@@ -67,7 +67,6 @@ const SignUp = () => {
       >
         <h2 className="text-2xl font-semibold text-center mb-6">{step === 1 ? "Register" : "Complete Your Profile"}</h2>
 
-        {/* Basic Info Fields */}
         {step === 1 && (
           <>
             <div className="mb-4">
@@ -117,7 +116,6 @@ const SignUp = () => {
           </>
         )}
 
-        {/* Lifestyle Data Fields */}
         {step === 2 && (
           <>
             <div className="mb-4">
@@ -139,6 +137,7 @@ const SignUp = () => {
                 onChange={handleChange}
                 className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
               >
+                <option value="gasoline">Gasoline</option>
                 <option value="electric">Electric</option>
                 <option value="hybrid">Hybrid</option>
                 <option value="public_transport">Public Transport</option>
@@ -165,7 +164,7 @@ const SignUp = () => {
                 onChange={handleChange}
                 className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
               >
-                <option value="plant-based">Plant-based</option>
+                <option value="vegan">Vegan</option>
                 <option value="vegetarian">Vegetarian</option>
                 <option value="meat-based">Meat-based</option>
               </select>
@@ -202,7 +201,6 @@ const SignUp = () => {
         )}
       </form>
 
-      {/* Error Popup */}
       {errorMessage && (
         <div className="fixed inset-0 flex justify-center items-center bg-gray-800 bg-opacity-75 z-50">
           <div className="bg-white p-6 rounded-lg shadow-lg max-w-sm w-full flex flex-col items-center">

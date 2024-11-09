@@ -23,6 +23,13 @@ async function fetchArticles() {
       }
 
       if (!title || !description || !link || !imgSrc) {
+        console.error("Missing data for article:", {
+          title,
+          description,
+          link,
+          imgSrc,
+        });
+
         return;
       }
 
@@ -40,4 +47,4 @@ async function fetchArticles() {
   }
 }
 
-module.exports = { fetchArticles };
+module.exports = fetchArticles;

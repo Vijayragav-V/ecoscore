@@ -1,5 +1,5 @@
 const calculateEcoScore = (lifestyleData, emissionsSaved) => {
-  let ecoScore = 50;
+  let ecoScore = 0;
   const {
     transportationMiles,
     vehicleType,
@@ -23,6 +23,9 @@ const calculateEcoScore = (lifestyleData, emissionsSaved) => {
     case "public_transport":
       ecoScore += 8;
       break;
+    case "gasoline":
+        ecoScore += 2;
+        break;
     case "none":
       ecoScore += 12;
       break;
@@ -35,7 +38,7 @@ const calculateEcoScore = (lifestyleData, emissionsSaved) => {
 
   // better diets = more points
   switch (dietType) {
-    case "plant-based":
+    case "vegan":
       ecoScore += 15;
       break;
     case "vegetarian":

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { getUser, getActions, completeAction } from "../services/api"; // No need for getUserProfile anymore
+import { getUser, getActions, completeAction } from "../services/api"; 
 import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
   const [user, setUser] = useState(null);
   const [actions, setActions] = useState([]);
-  const [completedActions, setCompletedActions] = useState([]); // Local state for completed actions
+  const [completedActions, setCompletedActions] = useState([]); 
   const [errorMessage, setErrorMessage] = useState(null);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
@@ -37,13 +37,11 @@ const Profile = () => {
   const handleCompleteAction = (actionId, CO2Saved) => {
     setCompletedActions((prev) => [...prev, actionId]);
 
-    // If the user is logged in, also save the action completion to the backend
     if (user) {
       completeAction(actionId).then((data) => {
         if (data.error) {
           setErrorMessage(data.error);
         } else {
-          // After completing the action, update the user's score by calling getUser again
           getUser().then((updatedUserData) => {
             if (updatedUserData.error) {
               setErrorMessage(updatedUserData.error);
@@ -57,19 +55,18 @@ const Profile = () => {
   };
 
   const handleClosePopup = () => {
-    setErrorMessage(null); // Close the error popup
+    setErrorMessage(null); 
   };
 
   const randomIndex = Math.floor(Math.random() * 83);
 
   if (loading) return <div>Loading...</div>;
 
-  const ecoScorePercentage = (user.ecoScore / 100) * 100;
+  const ecoScorePercentage = user.ecoScore / 100 * 100;
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-green-500 to-blue-700 pt-20 pb-5">
+    <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-green-300 to-blue-300 pt-20 pb-5">
       <div className="container mx-auto max-w-5xl p-8 shadow-lg rounded-lg bg-white">
-        {/* Error Popup */}
         {errorMessage && (
           <div className="fixed inset-0 flex justify-center items-center bg-gray-800 bg-opacity-75 z-50">
             <div className="bg-white p-6 rounded-lg shadow-lg max-w-sm w-full flex flex-col items-center">
@@ -105,7 +102,7 @@ const Profile = () => {
             ></div>
           </div>
           <p className="text-center text-lg font-semibold text-green-700">
-            {user.ecoScore} / 100
+            {Math.floor(user.ecoScore)} / 100
           </p>
         </section>
 

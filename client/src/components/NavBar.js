@@ -16,11 +16,12 @@ const Navbar = () => {
   const navigationItems = [
     { label: "Articles", path: "/articles" },
     { label: "About", path: "/about" },
+    { label: "Donate", path: "https://donate.edf.org/campaign/630859/donate?addl_info=/splash/takeover-homepage-eoy-2024&ut_sid=4358bda2-9c69-40ef-b28d-743dac590562&ut_pid=71f81ffb-9081-4079-9f3d-5c524e0f36a2&conversion_pg=www.edf.org%2F&landing_pg=www.edf.org%2F&landing_pg_1st_visit=www.edf.org%2F&source_1st_visit=www.google.com&subsource_1st_visit=%2F&custom_source=www.google.com&custom_sub_source=%2F&custom_transfer=1731186179581"}
   ];
 
   return (
     <div className="shadow-lg fixed w-full top-0 backdrop-filter backdrop-blur-xl bg-gray-500/30 z-50 font-nunito">
-      <div className="flex justify-between items-center h-[8vh] max-w-7xl mx-auto px-4 text-white">
+      <div className="flex justify-between items-center h-[8vh] w-[80%] mx-auto text-white">
         <Link to="/" className="flex items-center text-4xl font-bold px-4">
           <img
             src={logo}
@@ -30,7 +31,7 @@ const Navbar = () => {
           />
           EcoScore
         </Link>
-        <ul className="hidden lg:flex justify-center lg:text-xl space-x-8">
+        <ul className="hidden lg:flex justify-center lg:text-xl space-x-16">
           {navigationItems.map((item) => (
             <li
               key={item.label}

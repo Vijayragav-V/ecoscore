@@ -156,6 +156,19 @@ const getUser = async () => {
   }
 };
 
+const getArticles = async () => {
+  try {
+    const { data } = await api.get("/article");
+    return data;
+  } catch (error) {
+    if (error.response) {
+      return { error: error.response.data.error };
+    } else {
+      return { error: error.message };
+    }
+  }
+};
+
 export {
   registerUser,
   loginUser,
@@ -164,4 +177,5 @@ export {
   completeAction,
   getUser,
   updateUser,
+  getArticles,
 };
